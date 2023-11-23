@@ -8,5 +8,6 @@ urlpatterns = [
     path('random', views.random_quote_json, name='random'),
     path('contribute', views.contribute, name='contribute'),
     path('', views.index, name='index'),
+    path('quotes/latest', views.latest_quote, name='latest'),
 
 ]
