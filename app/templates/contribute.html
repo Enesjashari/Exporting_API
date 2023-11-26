@@ -1,27 +1,36 @@
+{% extends 'index.html' %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contribute Form</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contribute Form</title>
+        {% block navbar %}
     <style>
+     body, h1, h2, p, code, form, label, input, button {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 20px;
+            font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
+            color: #333; /* Changed text color */
+            margin: 0; /* Reset margin */
         }
 
         h1 {
             text-align: center;
-            color: #333;
+            color: #007BFF; /* Changed header color */
+            margin-top: 20px;
         }
 
         form {
             max-width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
+            margin: 20px auto; /* Adjusted margin */
             padding: 20px;
+            background-color: #282c34; /* Changed form background color */
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -29,51 +38,58 @@
         label {
             display: block;
             margin-bottom: 8px;
-            color: #333;
+            color: #d4d4d4; /* Changed label color */
         }
 
         input {
-            width: 100%;
+            width: calc(100% - 22px); /* Adjusted input width */
             padding: 10px;
             margin-bottom: 15px;
             box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 4px;
             font-size: 16px;
+            background-color: #fff; /* Changed input background color */
+            color: #333; /* Changed input text color */
         }
 
         button {
-            background-color: #4caf50;
+            background-color: #007BFF; /* Changed button color */
             color: #fff;
             padding: 12px 20px;
             font-size: 16px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            width: 100%;
+            margin-top: 15px; /* Added margin-top */
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #0056b3; /* Changed button hover color */
         }
     </style>
 </head>
 <body>
+
+  
+      
     <h1>Contribute Form</h1>
 
     <form method="post">
         {% csrf_token %}
         <label for="quote">Quote:</label>
         <input type="text" id="quote" name="quote" placeholder="Enter the quote">
-
+        
         <label for="movie_title">Movie Title:</label>
         <input type="text" id="movie_title" name="movie_title" placeholder="Enter the movie title">
-
+        
         <label for="actor_name">Actor Name:</label>
         <input type="text" id="actor_name" name="actor_name" placeholder="Enter the actor name">
-
+        
         <label for="category">Category:</label>
         <input type="text" id="category" name="category" placeholder="Enter the category">
-
+        
         <label for="publish_date">Publish Date:</label>
         <input type="text" id="publish_date" name="publish_date" placeholder="Enter the publish date">
 
@@ -91,11 +107,12 @@
 
         <label for="author">Author:</label>
         <input type="text" id="author" name="author" placeholder="Enter the author">
-
+        
         <label for="author_bio">Author Bio:</label>
         <input type="text" id="author_bio" name="author_bio" placeholder="Enter the author bio">
 
         <button type="submit">Submit</button>
     </form>
+    {% endblock %}
 </body>
 </html>

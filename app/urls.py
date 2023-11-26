@@ -9,5 +9,6 @@ urlpatterns = [
     path('contribute', views.contribute, name='contribute'),
     path('', views.index, name='index'),
     path('quotes/latest', views.latest_quote, name='latest'),
+    path('contact/', views.contact, name='contact'),
 
 ]

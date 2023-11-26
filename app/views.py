@@ -1,7 +1,7 @@
 from rest_framework import generics, status
 from .models import Quote
 from .serializers import QuoteSerializer
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from rest_framework.response import Response
 from rest_framework.exceptions import NotFound
 from django.http import Http404
@@ -103,3 +103,39 @@ def latest_quote(request):
         return JsonResponse({'NewestQuote': newest_quote_data})
     else:
         return JsonResponse({'NewestQuote': 'No quotes found'})
+
+
+
+from .forms import ContactForm
+from django.http import HttpResponse
+from django.contrib import messages
+import time
+# def contact(request):
+#     if request.method == 'POST':
+#         form = ContactForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             messages.info(request, 'Successfully delivered!')
+#             time.sleep(5)
+#             return redirect('index')  # Redirect to success view
+#     else:
+#         form = ContactForm()
+#         messages.info(request, 'Not delivered!')
+
+#     return render(request, 'contact.html', {'form': form})
+
+from django.http import JsonResponse
+
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'Successfully delivered!')
+        messages.info(request, 'Not delivered!')
+            
+    else:
+        form = ContactForm()
+        # messages.info(request, 'Not delivered!')
+
+    return render(request, 'contact.html', {'form': form})

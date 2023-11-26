@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Quote
+from .models import *
 
 # admin.site.register(Quote)
 
@@ -16,3 +16,4 @@ class StudentAdmin(ImportExportModelAdmin):
     resource_class = StudentResource
 
 admin.site.register(Quote,StudentAdmin)
+admin.site.register(Contact)

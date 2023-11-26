@@ -1,29 +1,97 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JQXXVT0D1W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JQXXVT0D1W');
+</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
 
-    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+     <link href="static/assets/css/style.css" rel="stylesheet">
+     <link href="static/assets/css/nav.css" rel="stylesheet">
+
+    <title>Quote API</title>
+    <meta content="Access the latest movie quotes, ratings, authors, and more through the Movie Quote API. Explore a diverse collection of quotes, including information on rating, author bios, and movie names. Free for the first month! Dive in now!" name="description">
+    <meta content="Quote api,Free API,Quotes,Movie api,Series api,Enes Jashari" name="keywords">
+    <meta name="author" content="Enes Jashari">
+      <!-- Favicons -->
+  <link href="https://wifiqrcode.pythonanywhere.com/static/assets/img/Quote-Logo.jpg" rel="icon">
+  <link href="https://wifiqrcode.pythonanywhere.com/static/assets/img/Quote-Logo.jpg" rel="apple-touch-icon">
+
+
+  <!-- HTML Meta Tags -->
+  <title>Quote API</title>
+  <meta name="description" content="Access the latest movie quotes, ratings, authors, and more through the Movie Quote API. Explore a diverse collection of quotes, including information on rating, author bios, and movie names. Free for the first month! Dive in now!">
+
+  <!-- Facebook Meta Tags -->
+  <meta property="og:url" content="https://quoteapi.pythonanywhere.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Quote API">
+  <meta property="og:description" content="Access the latest movie quotes, ratings, authors, and more through the Movie Quote API. Explore a diverse collection of quotes, including information on rating, author bios, and movie names. Free for the first month! Dive in now!">
+  <meta property="og:image" content="https://wifiqrcode.pythonanywhere.com/static/assets/img/Quote-Logo.jpg">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="quoteapi.pythonanywhere.com">
+  <meta property="twitter:url" content="https://quoteapi.pythonanywhere.com/">
+  <meta name="twitter:title" content="Quote API">
+  <meta name="twitter:description" content="Access the latest movie quotes, ratings, authors, and more through the Movie Quote API. Explore a diverse collection of quotes, including information on rating, author bios, and movie names. Free for the first month! Dive in now!">
+  <meta name="twitter:image" content="https://wifiqrcode.pythonanywhere.com/static/assets/img/Quote-Logo.jpg">
+
+
+
+
 </head>
 <body>
     
-    <!-- Documentation -->
+    <nav id='menu'>
+        <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+        <ul>
+            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+            <li><a class='dropdown-arrow' href='http://'>Products</a>
+                <ul class='sub-menus'>
+              <li><a href='http://'>Products 1</a></li>
+              <li><a href='http://'>Products 2</a></li>
+              <li><a href='http://'>Products 3</a></li>
+              <li><a href='http://'>Products 4</a></li>
+            </ul>
+          </li>
+          <li><a href="{% url 'contribute' %}">Contribute Form</a></li>
+          <li><a class='dropdown-arrow' href='http://'>Services</a>
+            <ul class='sub-menus'>
+                <li><a href="https://quoteapi.pythonanywhere.com/quotes">/ quotes /</a></li>
+                <li><a href="https://quoteapi.pythonanywhere.com/random">/ random /</a></li>
+              <li><a href="https://quoteapi.pythonanywhere.com/quotes/latest">/ lastest /</a></li>
+              <li><a href="https://quoteapi.pythonanywhere.com/quote/1">/ quote / ID</a></li>
+            </ul>
+        </li>
+        <li><a href="{% url 'index' %}">Home</a></li>
+        </ul>
+      </nav>
+
+        {% block navbar %}
+      
+      <!-- Documentation -->
     <h1>Movie Quote API Documentation</h1>
-    
+
     <section>
         <h2>Introduction</h2>
         <p>Welcome to the Movie Quote API documentation. This API provides access to the latest movie quotes, along with relevant information such as rating, author, author bio, and movie name. The API is free for the first month, and we're excited to have you on board.</p>
     </section>
-    
+
     <section>
         <h2>Base URL</h2>
         <code>https://quoteapi.pythonanywhere.com/</code>
     </section>
-    
+
     <!-- <section>
         <h2>Authentication</h2>
         <p>To access the Movie Quote API, you need to include your API key in the request headers. You can obtain your API key by registering on our <a href="https://developer.example.com">developer portal</a>.</p>
@@ -34,7 +102,7 @@
 
 
     <h1>Welcome to Quote API</h1>
-
+    
     <!-- How to use API -->
 <section>
         <h2>How to use API</h2>
@@ -43,7 +111,7 @@
             <pre>
                 <code>
     <span>Get_API.py <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png" height="17" width="15" alt="error404"></span>
-             
+
     import requests
 
     api_url = 'https://quoteapi.pythonanywhere.com/quotes/'
@@ -53,7 +121,7 @@
         data = response.json()
         print(data)  # Replace this with how you want to handle the received data
     else:
-        print('Failed to fetch data from API:', response.status_code)
+    print('Failed to fetch data from API:', response.status_code)
                 </code>
             </pre>
 
@@ -75,19 +143,19 @@
     ?
                 </code>
             </pre>
-
+            
             <!-- JavaScript -->
             <pre>
                 <code>
     <span>Get_API.js <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" height="17" width="17" alt="error404"></span>
-                   
+    
     const apiUrl = 'https://quoteapi.pythonanywhere.com/quotes/';
-
+    
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => console.log(data))
         .catch(error => console.error('Error:', error));
-                </code>
+    </code>
             </pre>
 
             <!-- Java -->
@@ -109,7 +177,7 @@
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("GET");
                 conn.connect();
-
+                
                 int responseCode = conn.getResponseCode();
                 if (responseCode == 200) {
                     BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -128,16 +196,16 @@
             }
         }
     }
-                </code>
-            </pre>
+</code>
+</pre>
         </code>
     </section>
 </body>
 </html>
-    <!-- end -->
+<!-- end -->
 
-    <!-- How to use random form -->
-    <section>
+<!-- How to use random form -->
+<section>
         <h2>How to use random form</h2>
         <code>
             <!-- Your HTML form code here -->
@@ -145,11 +213,11 @@
         </code>
     </section>
 
-    
+
 
     <section>
         <h2>Endpoints</h2>
-
+        
         <h3>1. Get Latest Movie Quotes</h3>
         <p><strong>Endpoint:</strong> <code>/quotes/latest</code></p>
         <p><strong>Method:</strong> <code>GET</code></p>
@@ -159,7 +227,7 @@
         <h4>Response</h4>
         <pre><code>{
   "quotes": [
-    {
+  {
       "quote": "Your quote here.",
       "rating": 4.8,
       "author": "John Doe",
@@ -167,7 +235,7 @@
       "movie_name": "Example Movie"
     },
     // Additional quotes...
-  ]
+    ]
 }</code></pre>
 
         <h3>2. Search Movie Quotes</h3>
@@ -177,23 +245,24 @@
         <h4>Request</h4>
         <pre><code>GET /quote/search?q=number
 e.x GET /quote/2</code></pre>
-        <h4>Response</h4>
-        <pre><code>{
+<h4>Response</h4>
+<pre><code>{
     "quotes": [
-      {
+    {
         "id": 2,
         "quote": "Life’s simple. You make choices and you don’t look back",
         "movie_title": "The Fast and The Furious: Tokyo Drift",
         "actor_name": "Han Lue",
         "category": "Action",
         "publish_date": "2006",
-        "source": "Netflix",
+        "source": "",
+        "context": "",
         "rating": "7.1",
         "language": "English",
         "author": "Sung Kang",
         "author_bio": "Kang was born in Clarkston, Georgia, to South Korean immigrant parents. He was raised by his Korean mother and African American stepfather in Gainesville, Georgia. He moved to Barstow, California, while in high school."
       }
-    ]
+      ]
   }
 </code></pre>
     </section>
@@ -204,26 +273,26 @@ e.x GET /quote/2</code></pre>
         <blockquote>
             <p><strong>Example:</strong></p>
             <pre><code>{
-  "error": {
+                "error": {
     "code": 404,
     "message": "Not Found",
     "details": "The requested resource was not found."
-  }
+}
 }</code></pre>
         </blockquote>
     </section>
-
+    
     <section>
         <h2>Rate Limits</h2>
         <p>To ensure fair usage, the API has rate limits. Free users are limited to 1000 requests per day.</p>
     </section>
-
+    
     <section>
-        <h2>Subscription</h2>
-        <p>To gain full access to our extensive movie quote database,<a href="mailto:enesjashari2004@gmail.com">subscribe</a> to our API service today!</p>
-        <p>If you have any questions or need further assistance, please contact our support team at <a href="mailto:enesjashari2004@gmail.com">enesjashari2004@gmail.com</a>.</p>
+        <h2>Conclusion</h2>
+        <p>Thank you for using the Movie Quote API. If you have any questions or need further assistance, please contact our support team at <a href="mailto:support@example.com">support@example.com</a>.</p>
         <p>Happy quoting!</p>
     </section>
     
+    {% endblock %}
 </body>
 </html>
